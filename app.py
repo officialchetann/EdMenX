@@ -23,18 +23,42 @@ budget = st.number_input(
 
 )
 
+priority = st.selectbox(
+
+    "What matters most to you?",
+    [
+        "Affordability",
+        "Career Opportunities",
+        "Student Life"
+    ]
+)
+
+city_size = st.selectbox(
+
+    "Preferred City Size:",
+    [
+        "Small",
+        "Medium",
+        "Large"
+    ]
+)
+
 if st.button("Analyze"):
+    results = evaluate_cities(budget, priority, city_size)
 
-    results = evaluate_cities(budget)
-
-    st.write("## Recommended Cities")
+    st.write("## 🏆 Recommended Cities")
 
     for index, city in enumerate(results[:3], start=1):
 
         st.write(
-
-            f"{index}. {city['city']} "
-
-            f"({city['score']}/100)"
-
+            f"### 🎖️ {index}. {city['city']} ({city['score']}/100)"
         )
+
+        for reason in city["reasons"]:
+            st.write(f"- {reason}")
+
+        st.markdown(
+            f"🔹 **Confidence:** {city['confidence']}"
+        )
+
+        st.write("---")

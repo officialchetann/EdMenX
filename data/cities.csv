@@ -1,6 +1,6 @@
-city,avg_rent,monthly_expenses,job_score,student_score
-Berlin,700,1100,90,88
-Munich,950,1450,95,82
-Leipzig,450,850,80,92
-Aachen,500,900,85,91
-Dresden,480,880,82,89
+city,avg_rent,monthly_expenses,job_score,student_score,city_size
+Berlin,700,1100,90,88,Large
+Munich,950,1450,95,82,Large
+Leipzig,450,850,80,92,Medium
+Aachen,500,900,85,91,Small
+Dresden,480,880,82,89,Medium
