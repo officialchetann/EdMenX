@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def evaluate_cities(budget, priority, city_size):
+def evaluate_cities(budget, priority, city_size, part_time):
 
     df = pd.read_csv("data/cities.csv")
     df.columns = df.columns.str.strip().str.lower()
@@ -60,6 +60,9 @@ def evaluate_cities(budget, priority, city_size):
 
         if current_city_size == city_size:
             total_score += 10
+
+        if part_time == "Yes":
+            total_score += (job_points * 0.20)
 
         total_score = round(total_score, 1)
 

@@ -43,8 +43,16 @@ city_size = st.selectbox(
     ]
 )
 
+part_time = st.selectbox(
+    "Need for Part-time Jobs:",
+    [
+        "Yes",
+        "No"
+    ]
+)
+
 if st.button("Analyze"):
-    results = evaluate_cities(budget, priority, city_size)
+    results = evaluate_cities(budget, priority, city_size, part_time)
 
     st.write("## 🏆 Recommended Cities")
 
@@ -62,3 +70,20 @@ if st.button("Analyze"):
         )
 
         st.write("---")
+
+    st.subheader("Top 3: Score Comparison")
+
+    chart_data = {
+        "City": [],
+        "Score": []
+    }
+
+    for city in results[:3]:
+
+        chart_data["City"].append(city["city"])
+        chart_data["Score"].append(city["score"])
+
+    st.bar_chart(data=chart_data,
+                 x="City",
+                 y="Score"
+    )
