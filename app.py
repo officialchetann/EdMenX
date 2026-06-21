@@ -59,9 +59,19 @@ if st.button("🚀 Analyze"):
 
     for index, city in enumerate(results[:3], start=1):
 
-        st.write(
-            f"### 🎖️ {index}. {city['city']} ({city['score']}/100)"
+        if index == 1:
+            medal = "🥇"
+        elif index == 2:
+            medal = "🥈"
+        elif index == 3:
+            medal = "🥉"
+        else:
+            medal = "🏅"
+
+        st.markdown(
+            f"### {medal} {index}. {city['city']} ({city['score']}/100)"
         )
+        if index == 1: st.success("⭐ Best Match!")
 
         for reason in city["reasons"]:
             st.write(f"- {reason}")

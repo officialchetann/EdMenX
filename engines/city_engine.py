@@ -65,6 +65,7 @@ def evaluate_cities(budget, priority, city_size, part_time):
             total_score += (job_points * 0.20)
 
         total_score = round(total_score, 1)
+        total_score = min(100, total_score)
 
         reasons = []
 
