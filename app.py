@@ -55,6 +55,37 @@ part_time = st.selectbox(
 if st.button("🚀 Analyze"):
     results = evaluate_cities(budget, priority, city_size, part_time)
 
+    summary = []
+
+    if priority == "Affordability":
+        summary.append("Your choices prioritize affordability.")
+
+    elif priority == "Career Opportunities":
+        summary.append("Your choices prioritize career opportunities.")
+
+    else:
+        summary.append("Your choices prioritize student life.")
+
+    if city_size == "Small":
+        summary.append(
+            "Budget-friendly locations with good part-time job opportunities are favored to support a financially sustainable student experience."
+        )
+
+    elif city_size == "Medium":
+        summary.append(
+            "Balanced cities with a supportive student environment are favored."
+        )
+
+    else:
+        summary.append(
+            "Larger cities with stronger employment opportunities are favored."
+        )
+
+    st.info(
+        "📝 Preference Summary\n\n"
+        + " ".join(summary)
+    )
+
     st.write("## 🏆 Recommended Cities")
 
     for index, city in enumerate(results[:3], start=1):
