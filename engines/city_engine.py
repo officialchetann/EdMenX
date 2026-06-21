@@ -109,7 +109,11 @@ def evaluate_cities(budget, priority, city_size, part_time):
             "city" : city,
             "score" : total_score,
             "confidence" : confidence,
-            "reasons" : reasons
+            "reasons" : reasons,
+            "avg_rent" : row["avg_rent"],
+            "monthly_expenses" : monthly_expenses,
+            "job_score" : job_score,
+            "student_score" : student_score
         })
 
     recommendations = sorted(

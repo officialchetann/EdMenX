@@ -2,18 +2,19 @@ import streamlit as st
 
 from engines.city_engine import evaluate_cities
 
+st.title("🎓 EdMenX")
 
-st.title("EdMenX")
+st.subheader("Int'l Student Decision Support System")
 
-st.subheader(
+st.caption("Helping international students choose the most "
+           "suitable German cities for education, based on finances, career opportunities, "
+           "and lifestyle preferences.")
 
-    "International Student Decision Support"
-
-)
+st.write("Answer below and get recommendations!")
 
 budget = st.number_input(
 
-    "Monthly Budget (€)",
+    "💶 Monthly Budget (€)",
 
     min_value=500,
 
@@ -25,7 +26,7 @@ budget = st.number_input(
 
 priority = st.selectbox(
 
-    "What matters most to you?",
+    "🎯 What matters most to you?",
     [
         "Affordability",
         "Career Opportunities",
@@ -35,7 +36,7 @@ priority = st.selectbox(
 
 city_size = st.selectbox(
 
-    "Preferred City Size:",
+    "🌃 Preferred City Size",
     [
         "Small",
         "Medium",
@@ -44,14 +45,14 @@ city_size = st.selectbox(
 )
 
 part_time = st.selectbox(
-    "Need for Part-time Jobs:",
+    "🏢 Need for Part-time Jobs",
     [
         "Yes",
         "No"
     ]
 )
 
-if st.button("Analyze"):
+if st.button("🚀 Analyze"):
     results = evaluate_cities(budget, priority, city_size, part_time)
 
     st.write("## 🏆 Recommended Cities")
@@ -68,6 +69,14 @@ if st.button("Analyze"):
         st.markdown(
             f"🔹 **Confidence:** {city['confidence']}"
         )
+
+        with st.expander("📜 View Details"):
+
+            st.write(f"Monthly Expenses: € {city['monthly_expenses']}")
+            st.write(f"Average Rent: € {city['avg_rent']}")
+            st.write(f"Job Score: € {city['job_score']}/100")
+            st.write(f"Student Score: € {city['student_score']}/100")
+            
 
         st.write("---")
 
