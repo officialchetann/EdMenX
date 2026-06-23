@@ -1,3 +1,5 @@
+from pdf_generator import generate_pdf
+
 import streamlit as st
 
 from engines.city_engine import evaluate_cities
@@ -53,7 +55,12 @@ part_time = st.selectbox(
 )
 
 if st.button("🚀 Analyze"):
+
+    from datetime import datetime
+    timestamp = datetime.now().strftime("%d %B %Y | %I:%M %p")
     results = evaluate_cities(budget, priority, city_size, part_time)
+
+    st.session_state["results"] = results
 
     summary = []
 
@@ -85,6 +92,8 @@ if st.button("🚀 Analyze"):
         "📝 Preference Summary\n\n"
         + " ".join(summary)
     )
+
+    st.session_state["summary"] = " ".join(summary)
 
     st.write("## 🏆 Recommended Cities")
 
@@ -137,3 +146,41 @@ if st.button("🚀 Analyze"):
                  x="City",
                  y="Score"
     )
+
+    with st.expander("📑 Detailed Comparison"):
+
+        comparison_data = []
+
+        for city in results[:3]:
+
+            comparison_data.append({
+
+                "City": city["city"],
+
+                "Monthly Expenses (€)": city["monthly_expenses"],
+
+                "Average Rent (€)": city["avg_rent"],
+
+                "Job Score": city["job_score"],
+
+                "Student Score": city["student_score"]
+
+            })
+
+        st.table(comparison_data)
+
+if "results" in st.session_state:
+
+    if st.button("📄 Generate Report"):
+
+        generate_pdf(
+
+            st.session_state["summary"],
+
+            st.session_state["results"]
+
+        )
+
+        st.success(
+            "Report created successfully!"
+        )
