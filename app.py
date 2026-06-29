@@ -14,6 +14,14 @@ st.caption("Helping international students choose the most "
 
 st.write("Answer below and get recommendations!")
 
+country = st.selectbox("🌍 Destination Country:",
+                       ["Germany",
+                        "France",
+                        "Belgium",
+                        "Netherlands",
+                        "Austria",
+                        "All Available Countries"])
+
 budget = st.number_input(
 
     "💶 Monthly Budget (€)",
@@ -58,9 +66,15 @@ if st.button("🚀 Analyze"):
 
     from datetime import datetime
     timestamp = datetime.now().strftime("%d %B %Y | %I:%M %p")
-    results = evaluate_cities(budget, priority, city_size, part_time)
+    results = evaluate_cities(country, budget, priority, city_size, part_time)
 
     st.session_state["results"] = results
+
+    st.session_state["country"] = country
+    st.session_state["budget"] = budget
+    st.session_state["priority"] = priority
+    st.session_state["city_size"] = city_size
+    st.session_state["part_time"] = part_time
 
     summary = []
 
@@ -95,79 +109,98 @@ if st.button("🚀 Analyze"):
 
     st.session_state["summary"] = " ".join(summary)
 
-    st.write("## 🏆 Recommended Cities")
+results = st.session_state.get("results", [])
 
-    for index, city in enumerate(results[:3], start=1):
+if results:
+        st.write("## 🏆 Recommended Cities")
 
-        if index == 1:
-            medal = "🥇"
-        elif index == 2:
-            medal = "🥈"
-        elif index == 3:
-            medal = "🥉"
-        else:
-            medal = "🏅"
+        for index, city in enumerate(results[:3], start=1):
 
-        st.markdown(
-            f"### {medal} {index}. {city['city']} ({city['score']}/100)"
-        )
-        if index == 1: st.success("⭐ Best Match!")
+            if index == 1:
+                medal = "🥇"
+            elif index == 2:
+                medal = "🥈"
+            elif index == 3:
+                medal = "🥉"
+            else:
+                medal = "🏅"
 
-        for reason in city["reasons"]:
-            st.write(f"- {reason}")
+            st.markdown(
+                f"### {medal} {index}. {city['city']} ({city['score']}/100)"
+            )
+            if index == 1: st.success("⭐ Best Match!")
 
-        st.markdown(
-            f"🔹 **Confidence:** {city['confidence']}"
-        )
+            for reason in city["reasons"]:
+                st.write(f"- {reason}")
 
-        with st.expander("📜 View Details"):
+            st.markdown(
+                f"🔹 **Confidence:** {city['confidence']}"
+            )
 
-            st.write(f"Monthly Expenses: € {city['monthly_expenses']}")
-            st.write(f"Average Rent: € {city['avg_rent']}")
-            st.write(f"Job Score: € {city['job_score']}/100")
-            st.write(f"Student Score: € {city['student_score']}/100")
-            
+            if st.button(f"📘 Learn More About {city['city']}",
+                        key=f"guide_{city['city']}"):
+                st.session_state["selected_city"] = city["city"]
+                st.switch_page("pages/student_guide.py")
 
-        st.write("---")
 
-    st.subheader("Top 3: Score Comparison")
+            if city["preference_fit"] == 5:
+                st.write("🟢 Matched all of your preferences!")
+            else:
+                st.write(f"🟢 Matched {city['preference_fit']} of your preferences.")
+                for mismatch in city["mismatches"]:
+                    st.write(f"🟡 {mismatch}")
 
-    chart_data = {
-        "City": [],
-        "Score": []
-    }
+            st.link_button(f" Explore {city['city']}",
+                        f"https://en.wikipedia.org/wiki/{city['city'].replace(' ', '_')}")
 
-    for city in results[:3]:
+            with st.expander("📜 View Details"):
 
-        chart_data["City"].append(city["city"])
-        chart_data["Score"].append(city["score"])
+                st.write(f"Monthly Expenses: € {city['monthly_expenses']}")
+                st.write(f"Average Rent: € {city['avg_rent']}")
+                st.write(f"Job Score: € {city['job_score']}/100")
+                st.write(f"Student Score: € {city['student_score']}/100")
+                
 
-    st.bar_chart(data=chart_data,
-                 x="City",
-                 y="Score"
-    )
+            st.write("---")
 
-    with st.expander("📑 Detailed Comparison"):
+        st.subheader("Top 3: Score Comparison")
 
-        comparison_data = []
+        chart_data = {
+            "City": [],
+            "Score": []
+        }
 
         for city in results[:3]:
 
-            comparison_data.append({
+            chart_data["City"].append(city["city"])
+            chart_data["Score"].append(city["score"])
 
-                "City": city["city"],
+        st.bar_chart(data=chart_data,
+                    x="City",
+                    y="Score"
+        )
 
-                "Monthly Expenses (€)": city["monthly_expenses"],
+        with st.expander("📑 Detailed Comparison"):
 
-                "Average Rent (€)": city["avg_rent"],
+            comparison_data = []
 
-                "Job Score": city["job_score"],
+            for city in results[:3]:
 
-                "Student Score": city["student_score"]
+                comparison_data.append({
 
-            })
+                    "City": city["city"],
 
-        st.table(comparison_data)
+                    "Monthly Expenses (€)": city["monthly_expenses"],
+
+                    "Average Rent (€)": city["avg_rent"],
+
+                    "Job Score": city["job_score"],
+
+                    "Student Score": city["student_score"]
+
+                })
+
+            st.table(comparison_data)
 
 if "results" in st.session_state:
 

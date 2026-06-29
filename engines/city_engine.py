@@ -1,7 +1,6 @@
 import pandas as pd
 
-
-def evaluate_cities(budget, priority, city_size, part_time):
+def evaluate_cities(country, budget, priority, city_size, part_time):
 
     df = pd.read_csv("data/cities.csv")
     df.columns = df.columns.str.strip().str.lower()
@@ -9,6 +8,10 @@ def evaluate_cities(budget, priority, city_size, part_time):
     recommendations = []
 
     for _, row in df.iterrows():
+
+        if country != "All Available Countries":
+            if row["country"] != country:
+                continue
 
         city = row["city"]
 
@@ -59,7 +62,7 @@ def evaluate_cities(budget, priority, city_size, part_time):
             total_score += student_points * 0.15
 
         if current_city_size == city_size:
-            total_score += 10
+            total_score += 20
 
         if part_time == "Yes":
             total_score += (job_points * 0.20)
@@ -99,16 +102,58 @@ def evaluate_cities(budget, priority, city_size, part_time):
         else:
             reasons.append("Average student environment")
 
+        # Preference Fit
+        mismatches = []
+        preference_fit = 0
+
+        if country == row["country"]:
+            preference_fit += 1
+        else:
+            mismatches.append(f"Country preference differed (Preferred: {country}, Current: {row['country']}).")
+        if difference >= 0:
+            preference_fit += 1
+        else:
+            mismatches.append("Budget value exceeded.")
+        if priority == "Affordability" and financial_score >= 30:
+            preference_fit += 1
+        elif priority == "Career Opportunities" and job_score >= 75:
+            preference_fit += 1
+        elif priority == "Student Life" and student_score >= 75:
+            preference_fit += 1
+        else:
+            mismatches.append(f"'{priority}' preference differed.")
+        if current_city_size == city_size:
+            preference_fit += 1
+        else:
+            mismatches.append(f"City size preference differed (Preferred: {city_size}, Current: {current_city_size}).")
+        if part_time == "Yes":
+            if job_score >= 70:
+                preference_fit += 1
+        elif part_time == "No":
+            preference_fit += 1
+        else:
+            mismatches.append("Part-time job preference differed.")
+
         if total_score >= 85:
-            confidence = "High"
+            if preference_fit >= 4:
+                confidence = "High"
+            else:
+                confidence = "Medium"
         elif total_score >= 70:
-            confidence = "Medium"
+            if preference_fit == 5:
+                confidence = "High"
+            elif preference_fit >= 3:
+                confidence = "Medium"
+            else:
+                confidence = "Low"
         else:
             confidence = "Low"
 
         recommendations.append({
             "city" : city,
             "score" : total_score,
+            "preference_fit" : preference_fit,
+            "mismatches" : mismatches,
             "confidence" : confidence,
             "reasons" : reasons,
             "avg_rent" : row["avg_rent"],
