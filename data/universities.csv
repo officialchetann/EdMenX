@@ -1,13 +1,77 @@
 city,university,rank_in_country,website,annual_fee,description
-Aachen,RWTH Aachen University,5,https://www.rwth-aachen.de,€0 (Semester Contribution),"Germany's leading engineering and technology university, internationally renowned for research and innovation."
-Aachen,FH Aachen University of Applied Sciences,15,https://www.fh-aachen.de,€0 (Semester Contribution),"A leading university of applied sciences with strong industry connections and practical learning."
 
-Berlin,Humboldt University of Berlin,2,https://www.hu-berlin.de,€0 (Semester Contribution),"One of Germany's oldest and most prestigious universities with strengths across many disciplines."
-Berlin,Technical University of Berlin,9,https://www.tu.berlin,€0 (Semester Contribution),"Globally respected for engineering, computer science, and technology."
+Aachen,RWTH Aachen University,5,https://www.rwth-aachen.de,€650,"Germany's leading engineering and technology university, internationally renowned for research and innovation."
+Aachen,FH Aachen University of Applied Sciences,15,https://www.fh-aachen.de,€650,"A leading university of applied sciences with strong industry connections and practical learning."
 
-Munich,Technical University of Munich,1,https://www.tum.de,€0 (Semester Contribution),"Germany's top-ranked university, internationally recognized for STEM, entrepreneurship, and research."
-Munich,Ludwig Maximilian University of Munich,3,https://www.en.uni-muenchen.de,€0 (Semester Contribution),"One of Europe's leading research universities with outstanding academic reputation."
+Berlin,Humboldt University of Berlin,2,https://www.hu-berlin.de,€700,"One of Germany's oldest and most prestigious universities with strengths across many disciplines."
+Berlin,Technical University of Berlin,9,https://www.tu.berlin,€700,"Globally respected for engineering, computer science, and technology."
 
-Freiburg,University of Freiburg,6,https://www.uni-freiburg.de,€0 (Semester Contribution),"A historic research university known for sustainability, medicine, and environmental sciences."
+Munich,Technical University of Munich,1,https://www.tum.de,€5000,"Germany's top-ranked university, internationally recognized for STEM, entrepreneurship, and research."
+Munich,Ludwig Maximilian University of Munich,3,https://www.en.uni-muenchen.de,€170,"One of Europe's leading research universities with outstanding academic reputation."
 
-Münster,University of Münster,10,https://www.uni-muenster.de,€0 (Semester Contribution),"One of Germany's largest universities with a vibrant student community."
+Freiburg,University of Freiburg,6,https://www.uni-freiburg.de,€3000,"A historic research university known for sustainability, medicine, and environmental sciences."
+Freiburg,Freiburg University of Education (Pädagogische Hochschule Freiburg),55,https://www.ph-freiburg.de/,€380,"Specializes in teacher education, educational sciences, psychology, and social sciences. "
+
+Münster,University of Münster,10,https://www.uni-muenster.de,€700,"One of Germany's largest universities with a vibrant student community."
+Münster,Münster University of Applied Sciences,32, https://www.fh-muenster.de/,€700,"One of Germany's leading Universities of Applied Sciences with strengths in engineering, business, design, and social sciences. "
+
+Cologne,University of Cologne, 10,https://www.uni-koeln.de/,€650,"One of Germany's oldest and largest universities, renowned for business, economics, law, medicine, and social sciences."
+Cologne,TH Köln (Cologne University of Applied Sciences),25,https://www.th-koeln.de/,€650,"Germany's largest University of Applied Sciences, known for engineering, IT, design, and applied research."
+
+Leipzig,Leipzig University,18,https://www.uni-leipzig.de/,€600,"One of Germany's oldest universities, offering strong programs in humanities, sciences, medicine, and economics."
+Leipzig,HWTK Leipzig,45,https://www.htwk-leipzig.de/,€600,"A leading University of Applied Sciences specializing in engineering, computer science, and architecture."
+
+Dresden,TU Dresden,11,https://tu-dresden.de/,€600,"One of Germany's prestigious technical universities, highly regarded for engineering, natural sciences, and research."
+Dresden,Dresden University of Applied Sciences (HTW Dresden),42,https://www.htw-dresden.de/,€600,"Well known for engineering, business, and applied sciences with strong industry connections."
+
+Hamburg,University of Hamburg,8,https://www.uni-hamburg.de/,€700,"One of Germany's largest research universities, offering excellent programs across sciences, law, economics, and humanities. "
+Hamburg,Hamburg University of Technology (TUHH),22,https://www.tuhh.de/,€700,"Internationally respected technical university focusing on engineering and innovation."
+
+Frankfurt,Goethe University Frankfurt,9,https://www.goethe-university-frankfurt.de/,€650,"A leading German university particularly recognized for economics, finance, law, and medicine. "
+Frankfurt,Frankfurt University of Applied Sciences,35,https://www.frankfurt-university.de/,€650,"Offers practice-oriented education in engineering, business, IT, and social sciences."
+
+Stuttgart,University of Stuttgart,12,https://www.uni-stuttgart.de/,€1500,"A globally recognized university known for engineering, automotive technology, aerospace, and architecture. "
+Stuttgart,Stuttgart Media University (HdM),40,https://www.hdm-stuttgart.de/⁠,€1500,"A leading institution specializing in media, communication, design, and information technology. "
+
+Nuremberg,FAU Erlangen–Nuremberg,7,https://www.fau.eu/,€600,"One of Germany's top research universities, offering outstanding programs in engineering, medicine, business, and sciences. "
+Nuremberg,Nuremberg Institute of Technology (Technische Hochschule Nürnberg),30,https://www.th-nuernberg.de/,€600,"A respected University of Applied Sciences with strengths in engineering, IT, architecture, and business."
+
+
+Paris,Sorbonne University,1,https://www.sorbonne-universite.fr/,€175,"France's leading public research university, internationally renowned for science, medicine, humanities, and engineering. "
+Paris,Université Paris Cité,3,https://u-paris.fr/,€175,"A major multidisciplinary university offering excellent programs in medicine, science, law, economics, and social sciences."
+
+Lyon,Claude Bernard University Lyon 1,6,https://www.univ-lyon1.fr/,€175,"One of France's leading universities for medicine, science, engineering, and health sciences. "
+Lyon,Jean Moulin University Lyon 3,14,https://www.univ-lyon3.fr/,€175,"Well known for law, business, management, languages, and humanities. "
+
+Toulouse,Toulouse INP,12,https://www.toulouse-inp.fr/,€175,"A prestigious engineering institute recognized for aerospace, civil engineering, computer science, and applied sciences."
+Toulouse,University of Toulouse Capitole,18,https://www.ut-capitole.fr/,€175,"One of France's leading universities for law, economics, management, and political science."
+
+
+Brussels,Vrije Universiteit Brussel,8,https://www.vub.be/,€1000,"A leading Belgian university recognized for engineering, business, health sciences, and international research."
+Brussels,Université libre de Bruxelles,4,https://www.ulb.be/,€900,"One of Belgium's top research universities, offering excellent programs across science, medicine, law, and humanities. "
+
+Leuven,KU Leuven,1,https://www.kuleuven.be/,€1100,"Belgium's highest-ranked university, internationally renowned for engineering, medicine, business, and research excellence. "
+Leuven,UC Leuven-Limburg,18,https://www.ucll.be/,€950,"A respected university of applied sciences offering practical programs in education, business, healthcare, and technology. "
+
+Ghent,Ghent University,2,https://www.ugent.be/,€1100,"One of Europe's leading research universities with strengths in engineering, biotechnology, medicine, and environmental sciences."
+Ghent,University of Applied Sciences and Arts Ghent,16,https://www.hogent.be/,€950,"Offers career-oriented education in engineering, business, design, health sciences, and technology."
+
+
+Amsterdam,University of Amsterdam,2,https://www.uva.nl/,€2530,"One of Europe's leading research universities, renowned for social sciences, business, AI, law, and humanities. "
+Amsterdam,Vrije Universiteit Amsterdam,5,https://vu.nl/,€2530,"A highly respected university known for business, medicine, computer science, and sustainability research. "
+
+Eindhoven,Eindhoven University of Technology,4,https://www.tue.nl/,€2530,"A world-class technical university specializing in engineering, AI, robotics, and innovation."
+Eindhoven,Fontys University of Applied Sciences,15,https://www.fontys.nl/,€2530,"Offers practice-oriented education in engineering, business, IT, and design with strong industry links."
+
+Groningen,University of Groningen,3,https://www.rug.nl/,€2530,"An internationally recognized university with strengths in economics, medicine, science, and international relations."
+Groningen,Hanze University of Applied Sciences,18, https://www.hanze.nl/,€2530,"A leading applied sciences university known for engineering, business, energy, and healthcare programs."
+
+
+Vienna,University of Vienna,1,https://www.univie.ac.at/,€1500,"Austria's oldest and largest university, internationally renowned for humanities, law, business, sciences, and social sciences. "
+Vienna,TU Wien,2,https://www.tuwien.at/,€1500,"One of Europe's leading technical universities, known for engineering, architecture, computer science, and innovation. "
+
+Graz,University of Graz,4,https://www.uni-graz.at/,€1500,"A prestigious Austrian university offering excellent programs in law, business, sciences, humanities, and social sciences."
+Graz,Graz University of Technology,5,https://www.tugraz.at/,€1500,"Internationally respected for engineering, computer science, electronics, and natural sciences."
+
+Linz,Johannes Kepler University Linz,6,https://www.jku.at/,€1500,"Known for business, economics, law, artificial intelligence, engineering, and medicine."
+Linz,University of Art and Design Linz,15,https://www.ufg.at/,€1500,"A creative institution specializing in design, media, architecture, visual arts, and digital innovation."

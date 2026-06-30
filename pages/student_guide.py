@@ -24,6 +24,7 @@ st.title(f"🎓 EdMenX for {selected_city}")
 st.caption(city_data["summary"])
 
 st.write("___")
+
 col1, col2 = st.columns(2)
 with col1:
     st.metric("🌍 Country", city_data["country"])
