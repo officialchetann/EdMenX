@@ -120,7 +120,8 @@ st.success(" ".join(insight))
 # -----------------------------
 st.write("----")
 st.subheader("🎓 Recommended Universities")
-
+city_universities = city_universities.sort_values(by="rank_in_country",
+                                                  ascending=True).reset_index(drop=True)
 for _, uni in city_universities.iterrows():
 
     st.markdown(
@@ -133,17 +134,49 @@ for _, uni in city_universities.iterrows():
 
     with st.expander("📘 View Details"):
 
-        st.write(
-            f"**Annual Fees:** {uni['annual_fee']}"
-        )
+        col1, col2 = st.columns([1, 2])
 
-        st.write(
-            uni["description"]
-        )
+        with col1:
+            st.markdown("**💶 Annual Fees**")
+        with col2:
+            st.write(uni["annual_fee"])
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            st.markdown("**🎯 Acceptance Rate**")
+        with col2:
+            st.write(uni["acceptance_rate"])
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            st.markdown("**🏛️ Core Departments**")
+        with col2:
+            st.write(
+                " • ".join(
+                    dept.strip()
+                    for dept in uni["core_departments"].split("|")
+                )
+            )
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            st.markdown("**🌍 Languages**")
+        with col2:
+            st.write(
+                " • ".join(
+                    lang.strip()
+                    for lang in uni["languages_of_instruction"].split("|")))
+
+        st.write("  ")
+        st.write(uni["description"])
 
         st.link_button(
             "🌐 Visit Official Website",
-            uni["website"]
+            uni["website"],
+            key=f"{selected_city}_{uni['university']}"
         )
 
     st.write("---")

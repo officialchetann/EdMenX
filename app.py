@@ -143,16 +143,6 @@ if results:
                 st.switch_page("pages/student_guide.py")
 
 
-            if city["preference_fit"] == 5:
-                st.write("🟢 Matched all of your preferences!")
-            else:
-                st.write(f"🟢 Matched {city['preference_fit']} of your preferences.")
-                for mismatch in city["mismatches"]:
-                    st.write(f"🟡 {mismatch}")
-
-            st.link_button(f" Explore {city['city']}",
-                        f"https://en.wikipedia.org/wiki/{city['city'].replace(' ', '_')}")
-
             with st.expander("📜 View Details"):
 
                 st.write(f"Monthly Expenses: € {city['monthly_expenses']}")
