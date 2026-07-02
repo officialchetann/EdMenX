@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import folium
+from streamlit_folium import st_folium
 
 st.set_page_config(
     page_title="EdMenX Student Guide",
@@ -20,6 +22,9 @@ city_universities = universities_df[
     universities_df["city"] == selected_city
 ]
 
+lat = city_data["latitude"]
+lon = city_data["longitude"]
+
 st.title(f"🎓 EdMenX for {selected_city}")
 st.caption(city_data["summary"])
 
@@ -35,6 +40,7 @@ with col2:
     selected_result = next(city for city in st.session_state["results"]
                          if city["city"] == selected_city)
     st.metric("💶 Estimated Monthly Cost", f"€{selected_result['monthly_expenses']}")
+
 
 comparison_data = [
     {
@@ -186,7 +192,7 @@ st.divider()
 # -----------------------------
 # S4
 # -----------------------------
-st.subheader("📍 City Snapshot")
+st.subheader("🌃 City Snapshot")
 
 snapshot_data = [
     ("💼 Employment", city_data["employment"]),
@@ -206,8 +212,6 @@ for title, value in snapshot_data:
     with col2:
         st.write(value)
 
-st.divider()
-
 st.write("----")
 st.subheader("🌍 Next Steps")
 
@@ -215,7 +219,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.link_button(
-        "🌐 Explore the City",
+        f"🌐 Explore {selected_city}",
         city_data["wikipedia"]
     )
 
@@ -234,3 +238,9 @@ with col2:
         "🛂 Visa Information",
         city_data["visa"]
     )
+
+st.write("----")
+st.subheader("📍 Location")
+city_map = folium.Map(location=[lat, lon], zoom_start=11)
+folium.Marker([lat, lon], tooltip=selected_city).add_to(city_map)
+st_folium(city_map, width=700, height=420)
