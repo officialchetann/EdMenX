@@ -187,7 +187,28 @@ for _, uni in city_universities.iterrows():
 
     st.write("---")
 
-st.divider()
+st.subheader("📝 Application Overview")
+
+application_data = {
+    "Category": [
+        "📅 Main Intake",
+        "📅 Secondary Intake",
+        "📄 APS Required",
+        "🌐 Application Method",
+        "📆 Typical Application Window"
+    ],
+    "Information": [
+        city_data["main_intake"],
+        city_data["secondary_intake"],
+        city_data["aps_required"],
+        city_data["application_method"],
+        city_data["application_window"]
+    ]
+}
+
+st.table(application_data)
+
+st.write("----")
 
 # -----------------------------
 # S4
